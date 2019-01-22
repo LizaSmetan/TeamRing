@@ -13,6 +13,7 @@ body{
     background-color: #f4f6f9;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 h1, h2, h3, h4, h5, h6, p{
     margin: 0;
@@ -59,4 +60,35 @@ input::-webkit-inner-spin-button {
     max-width: 1770px;
     padding: 0 15px;
     margin: 0 auto;
+}
+._button{
+    font-weight: bold;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 20px;
+    text-align: center;
+    letter-spacing: .05em;
+}
+._button_light{
+    color: #7f7f81;
+    border: 1px solid #7f7f81;
+    background: transparent;
+    transition: all .3s linear;
+}
+._button_light:hover{
+    color: #333;
+    border: 1px solid #333;
+    transition: all .3s linear;
+}
+._button_green{
+    border: 1px solid transparent;
+    background: #10b193;
+    color: #fff;
+    transition: all .3s linear;
+}
+._button_green:hover{
+    transition: all .3s linear;
+    background: transparent;
+    color: #10b193;
+    border: 1px solid #10b193;
 }

@@ -10,7 +10,27 @@ $().ready(function () {
             $(this).addClass('opened');
         }
     });
+
+    $('.header_branding__user').on('click', function () {
+        $('html').toggleClass('open_user_js');
+        $('html').removeClass('open_menu_js');
+    });
     $('.header_branding__burger').on('click', function () {
        $('html').toggleClass('open_menu_js');
+        $('html').removeClass('open_user_js');
+
     });
+    $('._overlay').on('click', function (e) {
+        $('html').removeClass('open_menu_js');
+        $('html').removeClass('open_user_js');
+    });
+    $(window).on('scroll', function () {
+        $('html').removeClass('open_menu_js');
+        $('html').removeClass('open_user_js');
+    });
+
+    $('.pay_system').on('click', function () {
+        $('.pay_system').removeClass('pay_system__chosen');
+        $(this).addClass('pay_system__chosen');
+    })
 });
