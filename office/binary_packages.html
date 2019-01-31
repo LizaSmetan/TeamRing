@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="fonts/Circe/stylesheet.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/office.css">
 </head>
@@ -133,7 +134,7 @@
                         <p><strong>Бонус 4%</strong> с каждой покупки<br/>  Ваших приглашенных пользователей</p>
                     </div>
                     <div class="binary_package__body_buttons">
-                        <a href="" class="binary_package__body_button binary_package__buy">
+                        <a href="" data-package="basic" data-name="BASIC" data-price="100" class="binary_package__body_button binary_package__buy">
                             <span>Приобрести</span>
                             <i class="far fa-shopping-basket"></i>
                         </a>
@@ -155,7 +156,7 @@
                         <p><strong>Бонус 4%</strong> с каждой покупки<br/>  Ваших приглашенных пользователей</p>
                     </div>
                     <div class="binary_package__body_buttons">
-                        <a href="" class="binary_package__body_button binary_package__buy">
+                        <a href="" data-package="pro" data-name="PRO" data-price="500" class="binary_package__body_button binary_package__buy">
                             <span>Приобрести</span>
                             <i class="far fa-shopping-basket"></i>
                         </a>
@@ -177,7 +178,7 @@
                         <p><strong>Бонус 4%</strong> с каждой покупки<br/>  Ваших приглашенных пользователей</p>
                     </div>
                     <div class="binary_package__body_buttons">
-                        <a href="" class="binary_package__body_button binary_package__buy">
+                        <a  href=""  data-package="vip" data-name="VIP" data-price="600" class="binary_package__body_button binary_package__buy">
                             <span>Приобрести</span>
                             <i class="far fa-shopping-basket"></i>
                         </a>
@@ -187,6 +188,15 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="binary_packages_info">
+            <h5>Информация покупателям</h5>
+            <ul>
+                <li>Вам предоставляется возможность купить любой из пакетов в расрочку!</li>
+                <li>Первый платеж составит всего треть стоимости, а оплата рассрочки будет производиться с заработанных этим пакетом бонусов.</li>
+                <li>Обратите внимание, что половина полученных Вами бонусов будет идти на оплату рассрочки.</li>
+                <li>Преобретенный единым платежем пакет предоставит возможность пользоваться полученными бонусами сразу и в полном объеме. </li>
+            </ul>
         </div>
     </div>
 </main>
@@ -220,7 +230,7 @@
                 <div class="footer_info">
                     <ul>
                         <li>
-                            <i class="fa fa-map-marker-alt"></i>
+                            <i class="far fa-map-marker-alt"></i>
                             <span>111190, Россия, г. Москва,
                                     проспект Свободы, дом 147,
                                     строение 5, этаж 12
@@ -280,7 +290,50 @@
     </div>
 </footer>
 
+
+<!--Модалка-->
+
+<div data-backdrop="static" id="binary_modal" class="modal fade binary_modal default_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Покупка пакета <strong>PRO</strong> PACK </h4>
+            </div>
+            <div class="modal-body">
+                <p>Оплата с основного кошелька</p>
+                <p>Сумма к оплате: <span><strong>150</strong> баллов</span></p>
+            </div>
+            <div class="modal-footer">
+                <p>Подтверждаете ли Вы оплату пакета «<strong>PRO</strong> PACK» </p>
+                <div class="binary_modal__buttons default_modal__buttons">
+                    <button type="button" class="_button _button_green">Подтвердить</button>
+                    <button type="button" class="_button _button_light" data-dismiss="modal">Отмена</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/scripts.js"></script>
+<script>
+    $().ready(function () {
+       $('.binary_package__buy').on('click', function (e) {
+           e.preventDefault();
+           var pack = $(this).attr('data-package');
+           var name = $(this).attr('data-name');
+           var price = $(this).attr('data-price');
+
+           $('#binary_modal').attr('data-package', pack);
+           $('.binary_modal .modal-header .modal-title strong').text(name);
+           $('.binary_modal .modal-body p span strong').text(price);
+           $('.binary_modal .modal-footer p strong').text(name);
+
+           $('#binary_modal').modal('show');
+       });
+    });
+</script>
 </body>
 </html>

@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="fonts/Circe/stylesheet.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/default.css">
     <link rel="stylesheet" href="css/office.css">
 </head>
@@ -137,7 +138,7 @@
                     </div>
                     <div class="invest_package_buy">
                         <div class="invest_package_buy_total"><span>1 179</span> баллов</div>
-                        <a href="" class="invest_package_buy_button">Преобрести пакет</a>
+                        <a href="" data-name="Пакет 1" data-price="54600" class="invest_package_buy_button">Преобрести пакет</a>
                     </div>
                 </div>
                 <div class="invest_package">
@@ -230,7 +231,7 @@
                     <div class="footer_info">
                         <ul>
                             <li>
-                                <i class="fa fa-map-marker-alt"></i>
+                                <i class="far fa-map-marker-alt"></i>
                                 <span>111190, Россия, г. Москва,
                                     проспект Свободы, дом 147,
                                     строение 5, этаж 12
@@ -290,7 +291,44 @@
         </div>
     </footer>
 
+<div data-backdrop="static" id="invest_modal" class="modal fade invest_modal default_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Покупка пакета <strong>PRO</strong> </h4>
+            </div>
+            <div class="modal-body">
+                <p>Оплата с основного кошелька</p>
+                <p>Сумма к оплате: <span><strong>150</strong> баллов</span></p>
+            </div>
+            <div class="modal-footer">
+                <p>Подтверждаете ли Вы оплату пакета «<strong>PRO</strong>» </p>
+                <div class="invest_modal__buttons default_modal__buttons">
+                    <button type="button" class="_button _button_green">Подтвердить</button>
+                    <button type="button" class="_button _button_light" data-dismiss="modal">Отмена</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/scripts.js"></script>
+<script>
+    $().ready(function () {
+        $('.invest_package_buy_button').on('click', function (e) {
+            e.preventDefault();
+            var name = $(this).attr('data-name');
+            var price = $(this).attr('data-price');
+
+            $('.invest_modal .modal-header .modal-title strong').text(name);
+            $('.invest_modal .modal-body p span strong').text(price);
+            $('.invest_modal .modal-footer p strong').text(name);
+
+            $('#invest_modal').modal('show');
+        });
+    });
+</script>
 </body>
 </html>

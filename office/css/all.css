@@ -5904,7 +5904,7 @@ readers do not read off random characters that represent icons */
 
 .far {
   font-family: 'Font Awesome 5 Pro';
-  font-weight: 400; }
+  font-weight: 200; }
 @font-face {
   font-family: 'Font Awesome 5 Pro';
   font-style: normal;
